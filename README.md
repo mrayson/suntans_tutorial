@@ -45,7 +45,7 @@ This installation is manual but you will learn how software packages are install
 
 ## Checkout the SUNTANS source code
 
- - Navigate to the folder where you want to store the code
+ - Navigate to the folder where you want to store the code: `cd suntans`
  - Clone the code from github: `git clone https://github.com/ofringer/suntans.git`
  - Switch to my branch: `git checkout variable_coriolis`
 
@@ -68,6 +68,10 @@ This creates an executable file called `sun`. You can try running it by typing: 
 It will return an error because you have not specfied the relevant inputs. This is next.
 
 ## Running a SUNTANS test case
+
+- Download these examples: `git clone https://github.com/mrayson/suntans_tutorial.git`
+- Navigate to the `tidal_front` example: `cd suntans_tutorial/tidal_front`
+- Edit the Makefile. Point the first line to the `suntans/main` folder
 
 
 ---
