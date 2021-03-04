@@ -54,12 +54,12 @@ This installation is manual but you will learn how software packages are install
  - Navigate to the `main` folder in the suntans code folder
  - Edit the file `Makefile.in` to point the compiler to the relevant library paths. For the installation described above, change it to:
 
- """
- MPIHOME=/usr
- PARMETISHOME=/home/suntans/code/ParMetis-3.2.0
- TRIANGLEHOME=
- NETCDF4HOME=/usr
- """
+```
+MPIHOME=/usr
+PARMETISHOME=/home/suntans/code/ParMetis-3.2.0
+TRIANGLEHOME=
+NETCDF4HOME=/usr
+```
  
  - Compile the code by typing: `make`
 
