@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import operator
 from scipy.interpolate import interp1d
 
-#from sfoda.ugrid.ugridgen import cartesian_ugrid_gen
+from sfoda.ugrid.ugridgen import cartesian_ugrid_gen
 import periodic_ugrid_gen as ugridgen
 from sfoda.suntans.sunboundary import modifyBCmarker, Boundary, InitialCond
 from sfoda.suntans.sunpy import Grid
@@ -106,12 +106,12 @@ def make_suntans(suntanspath):
     ylims = [0,W]
 
     # Create the grid
-    #grd= cartesian_ugrid_gen(xlims, ylims, dx, suntanspath=suntanspath)
-    xgrd = np.arange(xlims[0],xlims[1]+1.0*dx,dx)
-    ygrd = np.arange(ylims[0],ylims[1]+1.0*dx,dx)
-    X,Y = np.meshgrid(xgrd,ygrd)
-    grd= ugridgen.periodic_ugrid_gen(X, Y, suntanspath=suntanspath,
-        periodic_y=True, periodic_x=False)
+    grd= cartesian_ugrid_gen(xlims, ylims, dx, suntanspath=suntanspath)
+    #xgrd = np.arange(xlims[0],xlims[1]+1.0*dx,dx)
+    #ygrd = np.arange(ylims[0],ylims[1]+1.0*dx,dx)
+    #X,Y = np.meshgrid(xgrd,ygrd)
+    #grd= ugridgen.periodic_ugrid_gen(X, Y, suntanspath=suntanspath,
+    #    periodic_y=True, periodic_x=False)
 
     # Load the grid
     grd = Grid(suntanspath)

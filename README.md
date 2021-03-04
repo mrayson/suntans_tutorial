@@ -42,6 +42,7 @@ This installation is manual but you will learn how software packages are install
 - Create a new conda environment: `conda create --name sfoda`
 - Activate the new environment: `conda activate sfoda`
 - Install my `SFODA` python library that contains all of the relevant code for interfacing with suntans as well as major python libraries (numpy, scipy, xarray, etc): `pip install git+https://github.com/mrayson/sfoda.git`
+- Instaell the GDAL python library. See here: [https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html]
 
 ## Checkout the SUNTANS source code
 
@@ -72,6 +73,11 @@ It will return an error because you have not specfied the relevant inputs. This 
 - Download these examples: `git clone https://github.com/mrayson/suntans_tutorial.git`
 - Navigate to the `tidal_front` example: `cd suntans_tutorial/tidal_front`
 - Edit the Makefile. Point the first line to the `suntans/main` folder
+- Edit the `tidal_front.sh` and point the `SUNTANSHOME` variable to the path where your code lives.
+- Run the example: `make test`
+
+## Inspect the results
+
 
 
 ---
