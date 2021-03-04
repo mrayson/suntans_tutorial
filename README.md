@@ -28,7 +28,7 @@ Need the following:
 
 This installation is manual but you will learn how software packages are installed.
 
-- Download Parmetis: `wget http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/OLD/ParMetis-3.2.0.tar.gz'
+- Download Parmetis: `wget http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/OLD/ParMetis-3.2.0.tar.gz`
 - Untar the folder: `tar -xvf ParMetis-3.2.0.tar.gz`
 - Change directory to the folder: `cd ParMetis-3.2.0`
 - Compile the library: `make`
@@ -36,9 +36,11 @@ This installation is manual but you will learn how software packages are install
 
 ## Install Python and relevant libraries
 
-- You will need `git` and `pip` installed first: `sudo apt install git pip`
+- You will need `git` and `pip` installed first: `sudo apt install git python3-pip`
 - Download and install a conda python installation. I like miniconda as its lightweight. `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh`
 - Install the package by running the shell script e.g. `sh Miniconda<version>.sh`
+- Create a new conda environment: `conda create --name sfoda`
+- Activate the new environment: `conda activate sfoda`
 - Install my `SFODA` python library that contains all of the relevant code for interfacing with suntans as well as major python libraries (numpy, scipy, xarray, etc): `pip install git+https://github.com/mrayson/sfoda.git`
 
 ## Checkout the SUNTANS source code
