@@ -11,6 +11,7 @@ from sfoda.suntans.sunslice import SliceEdge
 
 import matplotlib
 # Set some default parameters
+matplotlib.rcParams['backend']='tkagg'
 matplotlib.rcParams['text.color']='white'
 matplotlib.rcParams['savefig.facecolor']='black'
 matplotlib.rcParams['savefig.edgecolor']='black'

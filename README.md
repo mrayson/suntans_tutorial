@@ -43,6 +43,8 @@ This installation is manual but you will learn how software packages are install
 - Activate the new environment: `conda activate sfoda`
 - Install my `SFODA` python library that contains all of the relevant code for interfacing with suntans as well as major python libraries (numpy, scipy, xarray, etc): `pip install git+https://github.com/mrayson/sfoda.git`
 - Instaell the GDAL python library. See here: [https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html]
+- Install shapely: `pip install shapely`
+
 
 ## Checkout the SUNTANS source code
 
@@ -62,6 +64,7 @@ TRIANGLEHOME=
 NETCDF4HOME=/usr
 ```
  
+ - Note to find parmetis type `locate parmetislib.h` and put that folder name in your `Makefile.in`
  - Compile the code by typing: `make`
 
 This creates an executable file called `sun`. You can try running it by typing: `./sun`
@@ -78,6 +81,12 @@ It will return an error because you have not specfied the relevant inputs. This 
 
 ## Inspect the results
 
+- Once your model runs, the output data is stored in the folder called: `data`
+- Plot a vertical slice of the output with: `python scripts/plot_vslice.py data/TideFront_0000.nc`
+- Plot a horizontal slice with the `sunplotpyqt.py`
+
+        - To find it type `locate sunplotpyqt.py`
+        - Then type `<path_to_sunplotpyqt>/sunplotqypt.py`
 
 
 ---
