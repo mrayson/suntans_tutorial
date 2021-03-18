@@ -88,6 +88,7 @@ It will return an error because you have not specfied the relevant inputs. This 
         - To find it type `locate sunplotpyqt.py`
         - Then type `<path_to_sunplotpyqt>/sunplotqypt.py`
 
+## Change model setup paramer
 
 ---
 

@@ -49,34 +49,47 @@ def gaussian(x,x0,a,b,pow=2.):
 def make_suntans(suntanspath):
     ####################################################
     # Inputs
+
+    # Boundary forcing parameters
     wave_period=12.42*3600.
+    U0 = 0.25        # Barotropic velocity [m/s]
 
-    U0 = 0.25        # Barotropic velocity
-
+    # Temperature intitial condition parameters
     T0 = 14.0
     dTdz = 0.07
+
     # Size of domain
+    L = 370e3  # Domain length [m]
+    W = 50e3 # Domain width [m]
+    H = -250 # Maximum depth
+
+    # Number of grid cells along each dimensions
     ny = 10
-    dx = 5000
+    nx = 96
     nz = 40
+    rstretch = 1.0
 
-    #suntanspath = 'data'
+    # Bathymetry parameters
+    x0 = np.array([0, 50e3, 60e3, 180e3, 300e3, 310e3, L])
+    y0 = np.array([H,H, H+130, H+190, H+130,H,H])
 
+
+    # Boundary condition time
     starttime = '20000101.000000'
     endtime = '20000301.000000'
     dt = 3600.
 
+    # Filenames initial and boundary condition file names
     icfile = 'TFront_IC.nc'
     bcfile = 'TFront_BC.nc'
-    ####################################################
-    L = 370e3 # km
-    H = -250
-    x0 = np.array([0, 50e3, 60e3, 180e3, 300e3, 310e3, L])
-    y0 = np.array([H,H, H+130, H+190, H+130,H,H])
+    #####################################################
 
+    ######
+    # Generate the bathymetry
     Lsmooth = 5000
+    dx = L/nx
     x = np.arange(0, L+dx, dx)
-    nx = x.shape[0]
+    #nx = x.shape[0]
     h =  broken_line(x, x0, y0)
     K = gauss_kernel(Lsmooth, dx)
     Nk = K.shape[0]//2
@@ -120,7 +133,7 @@ def make_suntans(suntanspath):
     grd.dv = F_bathy(grd.xv)
     grd.saveBathy('%s/depth.dat-voro'%suntanspath)
 
-    grd.dz = grd.calcVertSpace(nz, 1.0, H)
+    grd.dz = grd.calcVertSpace(nz, rstretch, H)
     grd.saveVertspace('%s/vertspace.dat'%suntanspath)
     grd.setDepth(grd.dz)
 
@@ -155,7 +168,7 @@ def make_suntans(suntanspath):
     ##grd.mark[indleft]=3
     ##grd.mark[indright]=3
     #
-    ## River boundaries
+    ## Velocity bouundaries
     grd.mark[indleft]=2
     grd.mark[indright]=2
     ##grd.edge_id[indleft]=1

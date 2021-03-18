@@ -13,9 +13,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import operator
 
-from soda.dataio.ugrid.ugridgen import cartesian_ugrid_gen
-from soda.dataio.suntans.sunboundary import modifyBCmarker, Boundary, InitialCond
-from soda.dataio.suntans.sunpy import Grid
+from sfoda.ugrid.ugridgen import cartesian_ugrid_gen
+from sfoda.suntans.sunboundary import modifyBCmarker, Boundary, InitialCond
+from sfoda.suntans.sunpy import Grid
 
 import pdb
 

@@ -21,7 +21,7 @@ LD = $(CC)
 CFLAGS = 
 MATHLIB = -lm
 
-EXEC = iwaves_bc
+EXEC = iwaves_shelf
 OBJS = 
 SUN = $(SUNTANSHOME)/sun
 INCLUDES = -I$(SUNTANSHOME) $(MPIINC) $(PARMETISINC)
