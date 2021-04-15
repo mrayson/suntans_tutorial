@@ -5,7 +5,7 @@ Plot a vertical slice of the data
 from datetime import datetime
 import numpy as np
 
-from soda.dataio.suntans.sunslice import SliceEdge
+from sfoda.suntans.sunslice import SliceEdge
 
 import matplotlib
 #matplotlib.use('Qt5Agg')

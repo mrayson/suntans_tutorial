@@ -40,15 +40,15 @@ def make_suntans(suntanspath):
     # Boundary forcing parameters
     wave_period=12*3600.
 
-    phi0 = 110.      # Internal wave amplitude (flux m^2/s)
+    phi0 = 110.      # Barotropic flux rate (flux m^2/s)
     U0 = 0.0        # Steady flow rate (flux)
     dudz = 0e-4      # Vertical Shear
 
     # Size of domain
     ny = 1
-    nx = 2800*2 # 50 m
-    nz = 75
-    rk = 1.034
+    nx = 280 # 50 m
+    nz = 50
+    rk = 1.0
     L = 280000 # m
 
     #suntanspath = 'data'
@@ -194,14 +194,14 @@ def make_suntans(suntanspath):
     omega = np.pi*2/wave_period
     for k in range(bnd.Nk):
        for ii, eptr in enumerate(bnd.edgep.tolist()):
-           #usteady = U0 + dudz * (H - grd.z_r[k])
+           usteady = U0 + dudz * (H - grd.z_r[k])
            amp = phi0/bnd.de[ii]
            if indleft[eptr]:
                #bnd.boundary_u[:,k,ii] = phi0*np.cos(k_z*grd.z_r[k])*np.sin(omega*t)
-               bnd.boundary_u[:,k,ii] = amp*np.sin(omega*t)# + usteady
+               bnd.boundary_u[:,k,ii] = amp*np.sin(omega*t) + usteady
                bnd.boundary_S[:,k,ii] = salt[k]# - phi0*np.sin(k_z*grd.z_r[k])*np.sin(omega*t)
            elif indright[eptr]:
-               bnd.boundary_u[:,k,ii] = amp*np.sin(omega*t)# + usteady
+               bnd.boundary_u[:,k,ii] = amp*np.sin(omega*t) + usteady
                bnd.boundary_S[:,k,ii] = salt[k]
                #bnd.boundary_u[:,k,ii] = u*nx[ii]
                #bnd.boundary_v[:,k,ii] = u*ny[ii]
