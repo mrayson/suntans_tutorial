@@ -1,14 +1,14 @@
 #!/bin/bash --login
 #
 #SBATCH --account=pawsey0106
-#SBATCH --time=04:00:00
+#SBATCH --time=01:00:00
 #SBATCH --export=NONE
-#SBATCH --partition=workq
-##SBATCH --partition=debugq
+##SBATCH --partition=workq
+#SBATCH --partition=debugq
 #SBATCH --output=LOGS/Browse2d-%j.out
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=matt.rayson@uwa.edu.au
-#SBATCH --nodes=1
+##SBATCH --mail-type=ALL
+##SBATCH --mail-user=matt.rayson@uwa.edu.au
+##SBATCH --nodes=1
 
 ########################################################################
 #
@@ -17,14 +17,14 @@
 ########################################################################
 
 #SUNTANSHOME=../../main
-SUNTANSHOME=/home/mrayson/code/suntans/main
+SUNTANSHOME=$MYGROUP/testing/suntans/main
 SUN=$SUNTANSHOME/sun
 
 # Python environment
 module use ~/code/modulefiles
-module load anaconda-python/2.0.0
+module load anaconda-python/3.6.0
 
-PYTHONEXEC="srun -u --export=all -n 1 -d 1 /home/mrayson/anaconda2/bin/python"
+PYTHONEXEC="srun -u --export=all -n 1 -d 1 python"
 
 
 . $SUNTANSHOME/Makefile.in

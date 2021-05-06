@@ -1,6 +1,5 @@
 #SUNTANSHOME=../../main
-SUNTANSHOME=/home/suntans/code/suntans/main
-#SUNTANSHOME=/home/mrayson/code/suntans/main
+SUNTANSHOME=/home/mrayson/group/mrayson/testing/suntans/main
 include $(SUNTANSHOME)/Makefile.in
 
 ifneq ($(MPIHOME),)
@@ -8,7 +7,7 @@ ifneq ($(MPIHOME),)
   MPIDEF = 
   MPIINC = -I$(MPIHOME)
 else
-  CC = gcc
+  CC = cc
   MPIDEF = -DNOMPI
   MPIINC = 
 endif
