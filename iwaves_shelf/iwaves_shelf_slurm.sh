@@ -32,7 +32,7 @@ module load singularity
 
 containerDir=/group/pawsey0106/mrayson/singularity
 export containerImage=$containerDir/python_sfoda006.sif
-PYTHONEXEC="srun -u --export=all -n $SLURM_NTASKS singularity exec $containerImage python -u"
+PYTHONEXEC="srun -u --export=all -n 1 singularity exec $containerImage python -u"
 
 . $SUNTANSHOME/Makefile.in
 
@@ -59,7 +59,7 @@ EXEC="srun -n $NUMPROCS $SUN"
 #    cp $maindatadir/suntans.dat $datadir/.
 #fi
 
-cp -r $maindatadir $datadir
+cp -r $maindatadir/* $datadir
 echo Creating input files...
 $PYTHONEXEC scripts/$makescript $datadir
 echo Creating grid...
