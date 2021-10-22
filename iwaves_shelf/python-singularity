@@ -1,0 +1,32 @@
+#!/bin/bash --login
+#
+#SBATCH --account=pawsey0106
+#SBATCH --time=01:00:00
+#SBATCH --export=NONE
+##SBATCH --partition=workq
+#SBATCH --partition=debugq
+#SBATCH --output=LOGS/Browse2d-%j.out
+##SBATCH --mail-type=ALL
+##SBATCH --mail-user=matt.rayson@uwa.edu.au
+##SBATCH --nodes=1
+#SBATCH --ntasks=4
+
+########################################################################
+#
+# Shell script to run a suntans test case.
+#
+########################################################################
+
+# Containerised python environment
+module load singularity
+
+containerDir=/group/pawsey0106/mrayson/singularity
+export containerImage=$containerDir/python_sfoda006.sif
+PYTHONEXEC="srun -u --export=all -n 1 singularity exec $containerImage python -u"
+
+makescript=$1
+
+NUMPROCS=$SLURM_NTASKS
+
+$PYTHONEXEC $makescript 
+

@@ -97,8 +97,7 @@ The job will fail because your python environment is not setup correctly...
 
 ## Setting up python on Pawsey
 
-TBD
-
+Use a singularity (docker-like) container -- see the `iwaves_shelf/python_singularity` script
 
 
 
