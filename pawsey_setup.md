@@ -56,7 +56,7 @@ make
 
 ## Compiling suntans
 
-Replace Makefile with Makefile.pawsey i.e. `cp Makefile.pawsey Makefile`
+Replace Makefile with Makefile.pawsey i.e. `cp iwaves_shelf/Makefile.pawsey <path-to-suntans-code>/Makefile`
 
 Update Makefile.in to:
 
