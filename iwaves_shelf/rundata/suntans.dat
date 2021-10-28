@@ -15,7 +15,7 @@ dzsmall			0.1	# Smallest grid spacing ratio before correction
 minimum_depth 		5.0	# Minimum grid cell depth
 scaledepth 		0 	# Scale the depth by scalefactor
 scaledepthfactor 	0 	# Depth scaling factor (to test deep grids with explicit methods)
-thetaramptime	        0 	# Timescale over which theta is ramped from 1 to theta (fs theta only)
+thetaramptime	        43200 	# Timescale over which theta is ramped from 1 to theta (fs theta only)
 beta			1e-3	# Expansivity of salt
 theta			0.55	# 0: fully explicit, 1: fully implicit
 thetaS			0.55	# For scalar advection
@@ -34,13 +34,13 @@ CdT	                0.00 	# Drag coefficient at surface
 CdB	                0.00	# Drag coefficient at bottom
 CdW			0.0	# Drag coefficient at sidewalls
 turbmodel		0	# Turbulence model (0 for none, 1 for MY25)
-dt 			10	# Time step
-nsteps			14400 86400   # Number of time steps
+dt 			5	# Time step
+nsteps			86400   # Number of time steps
 Cmax 			1.0	# Maximum permissible Courant number
 ntout   		180	# How often to output data
 ntprog   		1 	# How often to report progress (in %)
 ntconserve 		1	# How often to output conserved data
-nonhydrostatic		0	# 0 = hydrostatic, 1 = nonhydrostatic
+nonhydrostatic		1	# 0 = hydrostatic, 1 = nonhydrostatic
 cgsolver		1	# 0 = GS, 1 = CG
 maxiters		1000	# Maximum number of CG iterations
 qmaxiters		2000	# Maximum number of CG iterations for nonhydrostatic pressure

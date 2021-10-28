@@ -27,9 +27,9 @@ def make_suntans(suntanspath):
     # Inputs
     
     # topo paramters
-    H = 1000.0
-    h0 = 750.
-    ls = 12500.
+    H = 300.0
+    h0 = 150.
+    ls = 10000.
     x0 = 60000.
 
     # Density parameters
@@ -40,16 +40,16 @@ def make_suntans(suntanspath):
     # Boundary forcing parameters
     wave_period=12*3600.
 
-    phi0 = 110.      # Barotropic flux rate (flux m^2/s)
+    phi0 = 50.      # Barotropic flux rate (flux m^2/s)
     U0 = 0.0        # Steady flow rate (flux)
     dudz = 0e-4      # Vertical Shear
 
     # Size of domain
     ny = 1
-    nx = 280 # 50 m
+    nx = 1200 # 100 m
     nz = 50
     rk = 1.0
-    L = 280000 # m
+    L = 120000 # m
 
     #suntanspath = 'data'
 

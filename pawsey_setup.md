@@ -50,13 +50,15 @@ Load netcdf: `module load cray-netcdf`
 
 ### Download and build parmetis:
 
-Change `mpicc` to `cc` in Makefile.in
+Follow the instructions in README.md. Also:
+
+Change `mpicc` to `cc` in <parmetis-folder>/Makefile.in
 
 make
 
 ## Compiling suntans
 
-Replace Makefile with Makefile.pawsey i.e. `cp iwaves_shelf/Makefile.pawsey <path-to-suntans-code>/Makefile`
+Replace Makefile with Makefile.pawsey i.e. `cp iwaves_shelf/Makefile.pawsey <path-to-suntans-code/main>/Makefile`
 
 Update Makefile.in to:
 

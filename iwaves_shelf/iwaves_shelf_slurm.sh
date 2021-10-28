@@ -3,13 +3,13 @@
 #SBATCH --account=pawsey0106
 #SBATCH --time=01:00:00
 #SBATCH --export=NONE
-#SBATCH --partition=workq
-##SBATCH --partition=debugq
+##SBATCH --partition=workq
+#SBATCH --partition=debugq
 #SBATCH --output=LOGS/Browse2d-%j.out
 ##SBATCH --mail-type=ALL
 ##SBATCH --mail-user=matt.rayson@uwa.edu.au
 ##SBATCH --nodes=1
-#SBATCH --ntasks=4
+#SBATCH --ntasks=8
 
 ########################################################################
 #
@@ -43,7 +43,7 @@ makescript=make_scenario_iwaves.py
 #datadir=data
 
 # Scratch outputfolder
-datadir=$MYSCRATCH/SUNTANS_test
+datadir=$MYSCRATCH/SUNTANS_test/iwaves_shelf
 
 NUMPROCS=$SLURM_NTASKS
 
@@ -59,7 +59,7 @@ EXEC="srun -n $NUMPROCS $SUN"
 #    cp $maindatadir/suntans.dat $datadir/.
 #fi
 
-cp -r $maindatadir/* $datadir
+cp $maindatadir/* $datadir
 echo Creating input files...
 $PYTHONEXEC scripts/$makescript $datadir
 echo Creating grid...

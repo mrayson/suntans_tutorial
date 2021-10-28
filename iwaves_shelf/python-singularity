@@ -5,11 +5,11 @@
 #SBATCH --export=NONE
 ##SBATCH --partition=workq
 #SBATCH --partition=debugq
-#SBATCH --output=LOGS/Browse2d-%j.out
+#SBATCH --output=LOGS/pythonjob-%j.out
 ##SBATCH --mail-type=ALL
 ##SBATCH --mail-user=matt.rayson@uwa.edu.au
-##SBATCH --nodes=1
-#SBATCH --ntasks=4
+#SBATCH --nodes=1
+##SBATCH --ntasks=4
 
 ########################################################################
 #
