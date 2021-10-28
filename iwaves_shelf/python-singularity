@@ -22,11 +22,10 @@ module load singularity
 
 containerDir=/group/pawsey0106/mrayson/singularity
 export containerImage=$containerDir/python_sfoda006.sif
-PYTHONEXEC="srun -u --export=all -n 1 singularity exec $containerImage python -u"
+#PYTHONEXEC="srun -u --export=all -n 1 singularity exec $containerImage python -u"
+PYTHONEXEC="singularity exec $containerImage python -u"
 
 makescript=$1
 
-NUMPROCS=$SLURM_NTASKS
 
-$PYTHONEXEC $makescript 
-
+$PYTHONEXEC $makescript $2

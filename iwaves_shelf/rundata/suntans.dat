@@ -5,7 +5,7 @@
 ########################################################################
 Nkmax			50	# Number of cells in the vertical
 maxFaces		4	#
-stairstep	        0	# 1 if stair-stepping, 0 if partial-stepping
+stairstep	        1	# 1 if stair-stepping, 0 if partial-stepping
 rstretch		1.0	# Stretching factor for vertical grid (1<=rstretch<1.1)
 CorrectVoronoi		0	# Whether or not to correct Voronoi points
 VoronoiRatio		1	# Adjust the voronoi points by this amount if 1 then = centroid.
@@ -20,12 +20,13 @@ beta			1e-3	# Expansivity of salt
 theta			0.55	# 0: fully explicit, 1: fully implicit
 thetaS			0.55	# For scalar advection
 thetaB			0.55	# For scalar advection
-kappa_s                 0       # Vertical mass diffusivity
-kappa_sH                0       # Horizontal mass diffusivity
+thetaM                  0.55    # Vertical momentum (-1 by default)
+kappa_s                 1e-4       # Vertical mass diffusivity
+kappa_sH                1e-4       # Horizontal mass diffusivity
 gamma 			1	# Coefficient of expansivity of temperature.
-kappa_T                 1e-5    # Vertical thermal diffusivity
-kappa_TH                1e-5    # Horizontal thermal diffusivity
-nu 			1e-5  	# Laminar viscosity of water (m^2 s^-1)
+kappa_T                 1e-4    # Vertical thermal diffusivity
+kappa_TH                1e-4    # Horizontal thermal diffusivity
+nu 			1e-4  	# Laminar viscosity of water (m^2 s^-1)
 nu_H 			1.0    # Horizontal laminar viscosity of water (m^2 s^-1)
 tau_T			0 	# Wind shear stress
 z0T	                0 	# Top roughness
@@ -64,10 +65,10 @@ sponge_decay	        1000	# Decay time scale for sponge layer
 readSalinity		0	# Whether or not to read initial salinity profile from file InitSalinityFile
 readTemperature		0	# Whether or not to read initial temperature profile from file InitTemperatureFile
 fixdzz			0	#
-interp			1	# Least-squares
-AB			3	#
-TVDsalt			3	#
-TVDtemp			3	#
+interp			0	# 0 - Perot, 1 - Wang et al
+AB			2	#
+TVDsalt			4	#
+TVDtemp			4	#
 TVDmomentum		4	#
 laxWendroff		0	#
 laxWendroff_Vertical	0	#

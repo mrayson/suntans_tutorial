@@ -2,6 +2,9 @@
 Plot a vertical slice of the data
 """
 
+import matplotlib
+matplotlib.use('TkAgg')
+
 from datetime import datetime
 import numpy as np
 import matplotlib.pyplot as plt
