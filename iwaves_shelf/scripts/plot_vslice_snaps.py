@@ -29,7 +29,7 @@ matplotlib.rcParams['font.family']='serif'
 
 import pdb
 
-def main(ncfile, t0):
+def main(ncfile, outpath):
     #
     ###
     # Inputs
@@ -58,9 +58,9 @@ def main(ncfile, t0):
 
     cmap = 'RdBu'
 
-    outpath = 'FIGURES/iwave_ridge'
+    #outpath = 'FIGURES/iwave_ridge'
 
-    #t0 = 0
+    t0 = 0
     ######
 
     # Load the slice object
@@ -132,7 +132,7 @@ def main(ncfile, t0):
         init_func=initanim, frames=timedays,  blit=False)
             #init_func=init, frames=[1,2], interval=50, blit=True)
 
-    anim.save("%s.gif"%outpath,writer='imagemagick',fps=12, dpi=90)
+    anim.save("%s.gif"%outpath, fps=12, dpi=90)
 
     #Writer = animation.writers['ffmpeg']
     #writer = Writer(fps=12, bitrate=14400, codec='mpeg4')
@@ -144,5 +144,5 @@ def main(ncfile, t0):
 if __name__=='__main__':
     import sys
     ncfile = sys.argv[1]
-    t0 = int(sys.argv[2])
-    main(ncfile, t0)
+    outpath = sys.argv[2]
+    main(ncfile, outpath)

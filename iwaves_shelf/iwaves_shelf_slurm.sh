@@ -1,10 +1,10 @@
 #!/bin/bash --login
 #
 #SBATCH --account=pawsey0106
-#SBATCH --time=01:00:00
+#SBATCH --time=06:00:00
 #SBATCH --export=NONE
-##SBATCH --partition=workq
-#SBATCH --partition=debugq
+#SBATCH --partition=workq
+##SBATCH --partition=debugq
 #SBATCH --output=LOGS/Browse2d-%j.out
 ##SBATCH --mail-type=ALL
 ##SBATCH --mail-user=matt.rayson@uwa.edu.au
@@ -31,13 +31,14 @@ SUN=$SUNTANSHOME/sun
 module load singularity
 
 containerDir=/group/pawsey0106/mrayson/singularity
-export containerImage=$containerDir/python_sfoda006.sif
+export containerImage=$containerDir/python_sfoda007.sif
 PYTHONEXEC="srun -u --export=all -n 1 singularity exec $containerImage python -u"
 
 . $SUNTANSHOME/Makefile.in
 
 maindatadir=rundata
 makescript=make_scenario_iwaves.py
+plotscript=
 
 # Local output folder
 #datadir=data
@@ -59,6 +60,9 @@ EXEC="srun -n $NUMPROCS $SUN"
 #    cp $maindatadir/suntans.dat $datadir/.
 #fi
 
+# cleanup the working directory
+rm $datadir/*.nc 
+
 cp $maindatadir/* $datadir
 echo Creating input files...
 $PYTHONEXEC scripts/$makescript $datadir
@@ -67,4 +71,7 @@ $EXEC -g -vvv --datadir=$datadir
 
 echo Running suntans...
 $EXEC -s -vvv --datadir=$datadir 
+
+echo Plotting solution...
+$PYTHONEXEC scripts/plot_vslice_snaps.py "$datadir/IWaveRidge_00*.nc" $datadir/iwave_ridge_gls1
 

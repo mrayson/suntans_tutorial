@@ -18,14 +18,16 @@
 ########################################################################
 
 # Containerised python environment
+module swap PrgEnv-cray PrgEnv-gnu
+module load ffmpeg
 module load singularity
 
 containerDir=/group/pawsey0106/mrayson/singularity
-export containerImage=$containerDir/python_sfoda006.sif
+export containerImage=$containerDir/python_sfoda007.sif
 #PYTHONEXEC="srun -u --export=all -n 1 singularity exec $containerImage python -u"
 PYTHONEXEC="singularity exec $containerImage python -u"
 
 makescript=$1
 
 
-$PYTHONEXEC $makescript $2
+$PYTHONEXEC $makescript $2 $3 $4 $5

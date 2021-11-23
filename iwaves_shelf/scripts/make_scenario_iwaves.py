@@ -31,6 +31,7 @@ def make_suntans(suntanspath):
     h0 = 150.
     ls = 10000.
     x0 = 60000.
+    L = 120000 # m
 
     # Density parameters
     betas = [1023.7, 1.12, 105, 52, 155, 43] # ~April 5
@@ -47,9 +48,8 @@ def make_suntans(suntanspath):
     # Size of domain
     ny = 1
     nx = 1200 # 100 m
-    nz = 50
+    nz = 51
     rk = 1.0
-    L = 120000 # m
 
     #suntanspath = 'data'
 

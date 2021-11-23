@@ -8,7 +8,8 @@ ifneq ($(MPIHOME),)
   MPIINC = -I$(MPIHOME)
 else
   CC = cc
-  MPIDEF = -DNOMPI
+  #MPIDEF = -DNOMPI
+  MPIDEF = 
   MPIINC = 
 endif
 
@@ -36,15 +37,15 @@ test:	data
 restart:    data
 	sh $(EXEC)-restart.sh $(NUMPROCS) 1
 
-data:	state.o 
-	cp state.o $(SUNTANSHOME)
+data:	state.o phys.o turbulence.o
+	cp state.o turbulence.o $(SUNTANSHOME)
 	make -C $(SUNTANSHOME)
 
 .c.o:	
 	$(LD) -c $(INCLUDES) $(DEFS) $*.c
 
 $(SUN):	state.o 
-	cp state.o $(SUNTANSHOME)
+	cp state.o phys.o turbulence.o $(SUNTANSHOME)
 	make -C $(SUNTANSHOME)
 
 debug:	data

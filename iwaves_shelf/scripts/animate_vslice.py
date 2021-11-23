@@ -9,7 +9,7 @@ from matplotlib.widgets import Slider
 import matplotlib.animation as animation
 import types
 
-from soda.dataio.suntans.sunslice import SliceEdge
+from sfoda.suntans.sunslice import SliceEdge
 
 import matplotlib
 # Set some default parameters
