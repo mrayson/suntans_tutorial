@@ -41,7 +41,7 @@ def main(ncfile, outpath):
     ypt = np.array([1., 1.])
     
     #clevs = np.linspace(0,2.4,12)
-    clevs = np.arange(0,27,0.25)
+    clevs = np.arange(0,27,0.125)
 
     varname = 'uc'
     clim = [-0.8, 0.8]

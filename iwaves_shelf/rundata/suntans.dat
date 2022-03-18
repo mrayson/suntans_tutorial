@@ -5,7 +5,7 @@
 ########################################################################
 Nkmax			51	# Number of cells in the vertical
 maxFaces		4	#
-stairstep	        1	# 1 if stair-stepping, 0 if partial-stepping
+stairstep	        0	# 1 if stair-stepping, 0 if partial-stepping
 rstretch		1.0	# Stretching factor for vertical grid (1<=rstretch<1.1)
 CorrectVoronoi		0	# Whether or not to correct Voronoi points
 VoronoiRatio		1	# Adjust the voronoi points by this amount if 1 then = centroid.
@@ -26,7 +26,7 @@ kappa_sH                1e-5 1e-3       # Horizontal mass diffusivity
 gamma 			1	# Coefficient of expansivity of temperature.
 kappa_T                 1e-5 1e-3    # Vertical thermal diffusivity
 kappa_TH                1e-5 1e-3    # Horizontal thermal diffusivity
-nu 			1e-5 1e-2  	# Laminar viscosity of water (m^2 s^-1)
+nu 			1e-3 1e-2  	# Laminar viscosity of water (m^2 s^-1)
 nu_H 			1.0    # Horizontal laminar viscosity of water (m^2 s^-1)
 tau_T			0 	# Wind shear stress
 z0T	                0 	# Top roughness
@@ -34,11 +34,11 @@ z0B	                0.0	# Bottom roughness
 CdT	                0.00 	# Drag coefficient at surface
 CdB	                0.00	# Drag coefficient at bottom
 CdW			0.0	# Drag coefficient at sidewalls
-turbmodel		1	# Turbulence model (0 for none, 1 for MY25, 2 gen, 3 k-eps, 4 k-omega)
-dt 			0.5     # Time step
-nsteps			864000   # Number of time steps
+turbmodel		3	# Turbulence model (0 for none, 1 for MY25, 2 gen, 3 k-eps, 4 k-omega)
+dt 			5.0     # Time step
+nsteps			86400   # Number of time steps
 Cmax 			1.0	# Maximum permissible Courant number
-ntout   		1800	# How often to output data
+ntout   		360	# How often to output data
 ntprog   		1 	# How often to report progress (in %)
 ntconserve 		1	# How often to output conserved data
 nonhydrostatic		1	# 0 = hydrostatic, 1 = nonhydrostatic
@@ -120,12 +120,12 @@ topology topology.dat	# Grid topology data
 # Profile options
 #
 ########################################################################
-ProfileVariables        husTkq         #
-DataLocations           sites.xy      # 
-ProfileDataFile         profdata.dat    # 
-ntoutProfs              480               #
-NkmaxProfs              75              #
-numInterpPoints         1               #
+#ProfileVariables        husTkq         #
+#DataLocations           sites.xy      # 
+#ProfileDataFile         profdata.dat    # 
+#ntoutProfs              480               #
+#NkmaxProfs              75              #
+#numInterpPoints         1               #
 ########################################################################
 #
 #  Output Data Files

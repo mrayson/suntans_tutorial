@@ -65,8 +65,8 @@ def make_suntans(suntanspath):
     H = -250 # Maximum depth
 
     # Number of grid cells along each dimensions
-    ny = 32
-    nx = 192
+    ny = 250 # 32
+    nx = 200 #192
     #gridfolder=''
 
     nz = 40

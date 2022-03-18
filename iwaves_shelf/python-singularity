@@ -30,4 +30,4 @@ PYTHONEXEC="singularity exec $containerImage python -u"
 makescript=$1
 
 
-$PYTHONEXEC $makescript $2 $3 $4 $5
+$PYTHONEXEC $makescript "$2" "$3" "$4" "$5"

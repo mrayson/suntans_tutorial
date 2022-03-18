@@ -287,7 +287,7 @@ void my25(gridT *grid, physT *phys, propT *prop, REAL **wnew, REAL **q, REAL **l
   /********* solve the GLS euqation *********/
   for(i=0;i<grid->Nc;i++) {
     if(grid->ctop[i]<grid->Nk[i]) {
-  // bottom and top shear stress quantities for boundary conditions
+    // bottom and top shear stress quantities for boundary conditions
     CdAvgT=0.0;
     CdAvgB=0.0;
     tauAvgT=0.0;
@@ -328,14 +328,6 @@ void my25(gridT *grid, physT *phys, propT *prop, REAL **wnew, REAL **q, REAL **l
       Pb = cpsi3*B[i][k]*l[i][k]/Qold[i][k];
       Diss = cpsi2*D[i][k]*l[i][k]/Qold[i][k]*
 	(1+E2*pow(Lold/KAPPA_VK/(z+grid->dv[i]),2)+E4*pow(Lold/KAPPA_VK/(z-phys->h[i]),2));
-
-
-
-      //TEMP 
-      //phys->T[i][k]=Ps+Pb-Diss;
-      //P[i][k]=Ps;
-      //B[i][k]=Pb;
-      //D[i][k]=Diss;
 
       if(Ps+Pb>0) {
 	phys->wtmp[i][k] = Ps+Pb;	
@@ -379,18 +371,6 @@ void my25(gridT *grid, physT *phys, propT *prop, REAL **wnew, REAL **q, REAL **l
   /********* set the limits for psi and k and extract q and l *********/
   for(i=0;i<grid->Nc;i++) {
     for(k=grid->ctop[i];k<grid->Nk[i];k++) {
-      // correct and store turb quantities to be n and n+1
-      // this is for outputting the actual B, D used in the calculation  
-      //if(P[i][k]+B[i][k]>0)
-      //D[i][k]=D[i][k]*q[i][k]/Qold[i][k];
-      //else {
-      //	D[i][k]=D[i][k]*q[i][k]/Qold[i][k];
-      //	B[i][k]=B[i][k]*q[i][k]/Qold[i][k];
-      //}
-      
-      //TEMP 
-      //phys->T[i][k]=(q[i][k]-Qold[i][k])/prop->dt;
-
       // recover length scale
       if(l[i][k]>psi_min && q[i][k]>k_min)
 	l[i][k] = pow((l[i][k]*pow(cm0,-gls_p)*pow(q[i][k],-gls_m)),1/gls_n);
@@ -430,7 +410,6 @@ void my25(gridT *grid, physT *phys, propT *prop, REAL **wnew, REAL **q, REAL **l
 	l[i][k] = Min(l[i][k], Lcrit);
       }
 
-
       // comput Gh with smoothing function G, following Warner
       Gh[k] = Min(Ghmax, -0.5*(NN[k]+NN[k+1])*pow(l[i][k]/q[i][k],2));
       Gh[k] = Min(Gh[k], Gh[k]-pow((Gh[k]-Ghcrit),2)/(Gh[k]+Ghmax-2.*Ghcrit)); // different from Burchard and peterson 1999 by a constant
@@ -439,35 +418,20 @@ void my25(gridT *grid, physT *phys, propT *prop, REAL **wnew, REAL **q, REAL **l
 
       //Apply stability functions 
       StabilityFunctions(&Sm,&Sh,Gh[k],Gm);
+
       // set minimal, disabled
-      //nuT[i][k]=Sm*q[i][k]*l[i][k];
-      //kappaT[i][k]=Sh*q[i][k]*l[i][k];
+      nuT[i][k]=Sm*q[i][k]*l[i][k];
+      kappaT[i][k]=Sh*q[i][k]*l[i][k];
 
       //Set an upper bound
-      nuT[i][k]=Min(Sm*q[i][k]*l[i][k], 1e-2);
-      kappaT[i][k]=Min(Sh*q[i][k]*l[i][k], 1e-2);
+      // nuT[i][k]=Min(Sm*q[i][k]*l[i][k], 1.);
+      // kappaT[i][k]=Min(Sh*q[i][k]*l[i][k], 1.);
 
-      
-
-      //TEMP
-      // phys->T[i][k]=Sm; //fabs(B[i][k])/(D[i][k]+fabs(B[i][k]));
-      //P[i][k]=Gh[k];
-      //D[i][k]=Gm;
-      //B[i][k]=Sh;
-     
-      //phys->T[i][k]=Sh; //0.5*NN[k]+0.5*NN[k+1];
-      //P[i][k]=Gh[k];
-      //D[i][k]=Sh;
-
-      //phys->T[i][k]=fabs(B[i][k])/(D[i][k]+fabs(B[i][k]));  //Sm
-      //P[i][k]=fabs(B[i][k])/P[i][k];
-      //D[i][k]=Gh[k];
-      
       // large nut is calculated for very poorly resolved offshore locations, snohomish 
-      //if(nuT[i][k]>1 || nuT[i][k]!=nuT[i][k]) {
-      //nuT[i][k]=1;
-      //kappaT[i][k]=Sh/Sm*nuT[i][k];	
-      //}
+      if(nuT[i][k]>1 || nuT[i][k]!=nuT[i][k]) {
+        nuT[i][k]=1;
+        kappaT[i][k]=Sh/Sm*nuT[i][k];	
+      }
 
 
     }

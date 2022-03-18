@@ -38,13 +38,13 @@ restart:    data
 	sh $(EXEC)-restart.sh $(NUMPROCS) 1
 
 data:	state.o phys.o turbulence.o
-	cp state.o turbulence.o $(SUNTANSHOME)
+	cp state.o phys.o turbulence.o $(SUNTANSHOME)
 	make -C $(SUNTANSHOME)
 
 .c.o:	
 	$(LD) -c $(INCLUDES) $(DEFS) $*.c
 
-$(SUN):	state.o 
+$(SUN):	state.o phys.o turbulence.o
 	cp state.o phys.o turbulence.o $(SUNTANSHOME)
 	make -C $(SUNTANSHOME)
 
