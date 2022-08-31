@@ -3,13 +3,13 @@
 #SBATCH --account=pawsey0106
 #SBATCH --time=01:00:00
 #SBATCH --export=NONE
-##SBATCH --partition=workq
-#SBATCH --partition=debugq
+#SBATCH --partition=work
 #SBATCH --output=LOGS/pythonjob-%j.out
 ##SBATCH --mail-type=ALL
 ##SBATCH --mail-user=matt.rayson@uwa.edu.au
-#SBATCH --nodes=1
-##SBATCH --ntasks=4
+#SBATCH --ntasks=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=8
 
 ########################################################################
 #
@@ -18,16 +18,13 @@
 ########################################################################
 
 # Containerised python environment
-module swap PrgEnv-cray PrgEnv-gnu
-module load ffmpeg
-module load singularity
+module load ffmpeg/4.4
+module load singularity/3.8.6
 
-containerDir=/group/pawsey0106/mrayson/singularity
-export containerImage=$containerDir/python_sfoda007.sif
-#PYTHONEXEC="srun -u --export=all -n 1 singularity exec $containerImage python -u"
+containerDir=/software/projects/pawsey0106/singularity
+export containerImage=$containerDir/jupyter_sfoda_20220831.sif
 PYTHONEXEC="singularity exec $containerImage python -u"
 
 makescript=$1
-
 
 $PYTHONEXEC $makescript "$2" "$3" "$4" "$5"
