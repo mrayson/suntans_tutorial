@@ -7,7 +7,7 @@ ifneq ($(MPIHOME),)
   MPIDEF = 
   MPIINC = -I$(MPIHOME)
 else
-  CC = cc
+  CC = cc 
   #MPIDEF = -DNOMPI
   MPIDEF = 
   MPIINC = 
@@ -18,7 +18,7 @@ ifneq ($(PARMETISHOME),)
 endif
 
 LD = $(CC) 
-CFLAGS = 
+CFLAGS = -O2 -fcommon
 MATHLIB = -lm
 
 EXEC = iwaves_shelf
@@ -42,7 +42,7 @@ data:	state.o phys.o turbulence.o
 	make -C $(SUNTANSHOME)
 
 .c.o:	
-	$(LD) -c $(INCLUDES) $(DEFS) $*.c
+	$(LD) $(CFLAGS) -c $(INCLUDES) $(DEFS) $*.c
 
 $(SUN):	state.o phys.o turbulence.o
 	cp state.o phys.o turbulence.o $(SUNTANSHOME)
