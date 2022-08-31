@@ -58,7 +58,7 @@ valgrind: data
 	$(MPIHOME)/bin/mpirun -np $(NUMPROCS) valgrind --tool=memcheck --leak-check=yes ./$(SUN) -s -vvv --datadir=$(datadir)
 
 clean:
-	#rm -f $(SUNTANSHOME)/*.o
+	rm -f $(SUNTANSHOME)/*.o
 	rm -f *.o
 
 clobber: clean
