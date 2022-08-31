@@ -1,5 +1,5 @@
 #SUNTANSHOME=../../main
-SUNTANSHOME=/home/mrayson/group/mrayson/testing/suntans/main
+SUNTANSHOME=/home/mrayson/software/code/suntans/main
 include $(SUNTANSHOME)/Makefile.in
 
 ifneq ($(MPIHOME),)

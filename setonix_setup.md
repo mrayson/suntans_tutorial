@@ -60,16 +60,12 @@ This installation is manual but you will learn how software packages are install
 - Compile the library: `make`
 - done.
 
-
-
-
-make
-
 ## Compiling suntans
 
-Replace Makefile with Makefile.pawsey i.e. `cp iwaves_shelf/Makefile.pawsey <path-to-suntans-code/main>/Makefile`
+- Download theexamples: `git clone https://github.com/mrayson/suntans_tutorial.git`
+- Replace `suntans/main/Makefile` with `iwaves_shelf/Makefile.pawsey` i.e. `cp <path-to-suntans-tutorial>/iwaves_shelf/Makefile.pawsey <path-to-suntans-code/main>/Makefile`
 
-Update Makefile.in to:
+- Update Makefile.in to:
 
 ```
 #MPIHOME=
@@ -78,7 +74,11 @@ TRIANGLEHOME=
 #NETCDF4HOME=
 ```
 
-Run `make`
+- Navigate to the `iwaves_shelf` test case folder
+- Update `Makefile` $SUNTANSHOME variable e.g.
+        `SUNTANSHOME='/home/mrayson/software/code/suntans/main`
+
+- Run `make`
 
 ## Run an example (no python)
 
