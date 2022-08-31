@@ -50,9 +50,18 @@ Load netcdf: `module load netcdf-c/4.8.1`
 
 ### Download and build parmetis:
 
-Follow the instructions in README.md. Also:
+This installation is manual but you will learn how software packages are installed.
 
-Change `mpicc` to `cc` in <parmetis-folder>/Makefile.in
+- ~~Download Parmetis: `wget http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/OLD/ParMetis-3.2.0.tar.gz`~~
+- Download Parametis (backup):  `curl https://cloudstor.aarnet.edu.au/plus/s/Y9eVZuaKclvsY6W/download -o ParMetis-3.2.0.tar.gz`
+- Untar the folder: `tar -xvf ParMetis-3.2.0.tar.gz`
+- Change directory to the folder: `cd ParMetis-3.2.0`
+- Change `mpicc` to `cc` in <parmetis-folder>/Makefile.in
+- Compile the library: `make`
+- done.
+
+
+
 
 make
 
