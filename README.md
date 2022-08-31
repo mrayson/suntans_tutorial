@@ -28,7 +28,8 @@ Need the following:
 
 This installation is manual but you will learn how software packages are installed.
 
-- Download Parmetis: `wget http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/OLD/ParMetis-3.2.0.tar.gz`
+- ~~Download Parmetis: `wget http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/OLD/ParMetis-3.2.0.tar.gz`~~
+- Download Parametis (backup):  `wget https://cloudstor.aarnet.edu.au/plus/s/Y9eVZuaKclvsY6W/download`
 - Untar the folder: `tar -xvf ParMetis-3.2.0.tar.gz`
 - Change directory to the folder: `cd ParMetis-3.2.0`
 - Compile the library: `make`
